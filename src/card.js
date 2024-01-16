@@ -27,7 +27,7 @@ class Card {
       easing: 'easeInOutQuad',
       duration: 500,
       complete: () => {
-        this.element.textContent = this.value;
+        this.element.innerHTML = `<p class="mirror-text">${this.value}</p>`;
       },
     });
   }
@@ -39,7 +39,7 @@ class Card {
       easing: 'easeInOutQuad',
       duration: 500,
       complete: () => {
-        this.element.textContent = '?';
+        this.element.innerHTML = `<p>?</p>`;
       },
     });
   }
