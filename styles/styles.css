@@ -5,7 +5,15 @@ body {
     height: 100vh;
     margin: 0;
   }
-  
+  #wrapper {
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+  .btn-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
   .board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
