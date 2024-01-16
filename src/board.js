@@ -6,6 +6,12 @@ class MemoryGameBoard {
     this.cards = this.generateShuffledCards();
     this.flippedCards = [];
     this.matchedCards = [];
+
+    this.wrapper = document.getElementById('wrapper');
+    this.timer = null;
+    this.timeElapsed = config.timeLimit;
+    this.timerDisplay = document.getElementById('timer');
+
     this.createBoard();
   }
 
@@ -22,7 +28,6 @@ class MemoryGameBoard {
   }
 
   generateShuffledCards() {
-    // hardcoded, add length dynamically
     const values = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     values.push(...values);
     const shuffledValues = this.shuffleArray(values);
@@ -52,12 +57,27 @@ class MemoryGameBoard {
       board.appendChild(card.element);
     });
 
-    // document.body.appendChild(board);
-    const wrapper = document.getElementById('wrapper');
-    if (wrapper) {
-      wrapper.appendChild(board);
+    if (this.wrapper) {
+      this.wrapper.appendChild(board);
     } else {
       console.error('Wrapper element not found.');
+    }
+
+    this.wrapper.addEventListener('mouseover', this.handleMouseOver.bind(this));
+    this.wrapper.addEventListener('mouseout', this.handleMouseOut.bind(this));
+
+    this.startTimer();
+  }
+
+  handleMouseOver() {
+    if (!this.timer) {
+      this.startTimer();
+    }
+  }
+
+  handleMouseOut() {
+    if (this.timer) {
+      this.pauseTimer();
     }
   }
 
@@ -70,6 +90,38 @@ class MemoryGameBoard {
         setTimeout(() => this.checkMatch(), 1000);
       }
     }
+  }
+
+  startTimer() {
+    this.timer = setInterval(() => this.updateTimer(), 1000);
+  }
+
+  updateTimer() {
+    this.timeElapsed--;
+    this.displayTime();
+    
+    if (this.timeElapsed <= 0) {
+      this.endGame();
+    }
+  }
+
+  displayTime() {
+    const minutes = Math.floor(this.timeElapsed / 60);
+    const seconds = this.timeElapsed % 60;
+    this.timerDisplay.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  }
+
+  pauseTimer() {
+    clearInterval(this.timer);
+    this.timer = null;
+  }
+
+  endGame() {
+    console.log('Game Over - Time Limit Exceeded');
+    clearInterval(this.timer);
+    // Additional logic to handle game over, such as displaying a message
+    // or resetting the game state
+    this.destroy();
   }
 
   checkMatch() {

@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const addEventListeners = () => {
-    document.getElementById('startButton').addEventListener('click', startGame);
-    document.getElementById('restartButton').addEventListener('click', restartGame);
+    document.getElementById('start-button').addEventListener('click', startGame);
+    document.getElementById('restart-button').addEventListener('click', restartGame);
   };  
 
   // Initial start of the game
