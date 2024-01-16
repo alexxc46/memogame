@@ -28,11 +28,12 @@ class MemoryGameBoard {
   }
 
   generateShuffledCards() {
-    const values = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const numPairs = (this.config.columns * this.config.rows) / 2;
+    const values = Array.from({ length: numPairs }, (_, index) => String(index + 1));
     values.push(...values);
     const shuffledValues = this.shuffleArray(values);
     return shuffledValues.map((value, index) => new Card(value, index, this.handleCardClick.bind(this)));
-  }
+}
 
   shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -117,7 +118,7 @@ class MemoryGameBoard {
   }
 
   endGame() {
-    console.log('Game Over - Time Limit Exceeded');
+    alert('Game Over - Time Limit Exceeded');
     clearInterval(this.timer);
     // Additional logic to handle game over, such as displaying a message
     // or resetting the game state
