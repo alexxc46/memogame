@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let memoryGame = null;
 
   const startGame = () => {
+    console.log('entering game start  ')
     if (memoryGame) {
+      console.log(memoryGame)
       console.log('Game already started, returning...');
       return;
     }
@@ -18,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (memoryGame) {
       memoryGame.destroy();
       memoryGame = null;
+      const board = document.querySelector('.board');
+      board.parentNode.removeChild(board);
     }
     startGame();
   };

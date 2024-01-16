@@ -12,7 +12,7 @@ class Card {
     const card = document.createElement('div');
     card.classList.add('card');
     card.dataset.index = this.index;
-    card.textContent = '?';
+    card.innerHTML = `<p class="question-mark">*</p>`;
     
     // Add click event listener to trigger the animation
     card.addEventListener('click', () => this.clickHandler(this));
@@ -39,7 +39,7 @@ class Card {
       easing: 'easeInOutQuad',
       duration: 500,
       complete: () => {
-        this.element.innerHTML = `<p>?</p>`;
+        this.element.innerHTML = `<p class="question-mark">*</p>`;
       },
     });
   }

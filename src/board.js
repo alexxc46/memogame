@@ -1,6 +1,6 @@
 import Card from './card.js';
 
-class MemoryGameBoard {
+class MemoryGameBoard {  
   constructor(config) {
     this.config = config;
     this.cards = this.generateShuffledCards();
@@ -11,6 +11,8 @@ class MemoryGameBoard {
     this.timer = null;
     this.timeElapsed = config.timeLimit;
     this.timerDisplay = document.getElementById('timer');
+
+    this.gameEnded = false;
 
     this.createBoard();
     this.updateButtons();  
@@ -105,6 +107,7 @@ class MemoryGameBoard {
   }
 
   updateTimer() {
+    if(this.gameEnded) return
     this.timeElapsed--;
     this.displayTime();
     
@@ -128,9 +131,8 @@ class MemoryGameBoard {
   endGame() {
     alert('Game Over - Time Limit Exceeded');
     clearInterval(this.timer);
-    // Additional logic to handle game over, such as displaying a message
-    // or resetting the game state
-    this.destroy();
+    this.gameEnded = true;
+    this.destroy();    
   }
 
   checkMatch() {
@@ -148,10 +150,12 @@ class MemoryGameBoard {
     this.flippedCards = [];
   }
 
-  destroy() {
-    // Implement cleanup logic if needed when restarting the game
-    const board = document.querySelector('.board');
-    board.parentNode.removeChild(board);
+  destroy() { 
+    // Clear the timer
+    this.pauseTimer();
+  
+    // Remove the board element    
+  
   }
 }
 
