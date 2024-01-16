@@ -52,7 +52,13 @@ class MemoryGameBoard {
       board.appendChild(card.element);
     });
 
-    document.body.appendChild(board);
+    // document.body.appendChild(board);
+    const wrapper = document.getElementById('wrapper');
+    if (wrapper) {
+      wrapper.appendChild(board);
+    } else {
+      console.error('Wrapper element not found.');
+    }
   }
 
   handleCardClick(clickedCard) {

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const addEventListeners = () => {
     document.getElementById('startButton').addEventListener('click', startGame);
     document.getElementById('restartButton').addEventListener('click', restartGame);
-  };
+  };  
 
   // Initial start of the game
   console.log('DOMContentLoaded event fired');
