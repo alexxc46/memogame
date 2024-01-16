@@ -16,10 +16,13 @@ Make sure you have Node.js installed on your system.
 
    ```bash
    git clone https://github.com/alexxc46/memogame.git
-2. Run
+2. Make sure to switch to "main" branch
+   ```bash
+   git checkout main
+3. Run
    ```bash
    npm install
-3. Run
+4. Run
   ```bash
   npm start
   your application will run on 127.0.0.1:8080   
