@@ -5,16 +5,22 @@ body {
     height: 100vh;
     margin: 0;
   }
+  .game-title {
+    text-align: center;
+    color: #4e54c8;
+  }
   #wrapper {
     padding: 10px;
     background-color: #f0f0f0;
   }
+  
   .btn-section {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 10px;
   }
+
   .board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -35,15 +41,6 @@ body {
     transform: scaleX(-1);
   }
 
-  #timer-paused {
-    color: orangered;
-    font-weight: bold;
-  }
-  #timer, #timer-paused {
-    width: 100px; 
+  #timer {
     text-align: center;
   }
-  .timer-hidden {
-    display: none;
-  }
-  

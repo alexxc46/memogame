@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     memoryGame = new MemoryGameBoard(gameConfig);
-    addEventListeners();
+    document.getElementById('timer').style.width = '100px';
   };
 
   const restartGame = () => {
