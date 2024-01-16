@@ -28,4 +28,7 @@ body {
     font-size: 20px;
     cursor: pointer;
   }
+  .mirror-text {
+    transform: scaleX(-1);
+  }
   
