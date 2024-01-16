@@ -80,6 +80,12 @@ class MemoryGameBoard {
 
     this.flippedCards = [];
   }
+
+  destroy() {
+    // Implement cleanup logic if needed when restarting the game
+    const board = document.querySelector('.board');
+    board.parentNode.removeChild(board);
+  }
 }
 
 export default MemoryGameBoard;
