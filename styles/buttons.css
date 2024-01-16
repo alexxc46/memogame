@@ -40,6 +40,7 @@
 
   .btn-hidden {
     visibility: hidden;
+    position: absolute;
   }
 
   /* Disabled button styles */

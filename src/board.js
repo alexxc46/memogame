@@ -11,6 +11,7 @@ class MemoryGameBoard {
     this.timer = null;
     this.timeElapsed = config.timeLimit;
     this.timerDisplay = document.getElementById('timer');
+    this.timerDisplayPause = document.getElementById('timer-paused');
 
     this.createBoard();
     this.updateButtons();  
@@ -100,6 +101,8 @@ class MemoryGameBoard {
   }
 
   startTimer() {
+    this.timerDisplay.classList.remove('timer-hidden');
+    this.timerDisplayPause.classList.add('timer-hidden');
     this.timer = setInterval(() => this.updateTimer(), 1000);
   }
 
@@ -119,6 +122,8 @@ class MemoryGameBoard {
   }
 
   pauseTimer() {
+    this.timerDisplay.classList.add('timer-hidden');
+    this.timerDisplayPause.classList.remove('timer-hidden');
     clearInterval(this.timer);
     this.timer = null;
   }
