@@ -25,4 +25,4 @@ Make sure you have Node.js installed on your system.
 4. Run
   ```bash
   npm start
-  your application will run on 127.0.0.1:8080   
+# Your application will run on http://127.0.0.1:8080
