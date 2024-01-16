@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let memoryGame = null;
 
   const startGame = () => {
-    console.log('Starting the game');
     if (memoryGame) {
       console.log('Game already started, returning...');
       return;
@@ -30,5 +29,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial start of the game
   console.log('DOMContentLoaded event fired');
-  startGame();
+  addEventListeners();
 });

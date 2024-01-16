@@ -13,6 +13,12 @@ class MemoryGameBoard {
     this.timerDisplay = document.getElementById('timer');
 
     this.createBoard();
+    this.updateButtons();  
+  }
+
+  updateButtons() {
+    document.getElementById('start-button').disabled = true
+    document.getElementById('restart-button').classList.remove('btn-hidden')
   }
 
   calculateCardSize() {
