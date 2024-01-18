@@ -23,18 +23,6 @@ class MemoryGameBoard {
     document.getElementById('restart-button').classList.remove('btn-hidden')
   }
 
-  calculateCardSize() {
-    const boardWidth = this.config.width;
-    const boardHeight = this.config.height;
-    const columns = this.config.columns;
-    const rows = this.config.rows;
-
-    const cardWidth = Math.floor(boardWidth / columns) - 10; // Adjust with a margin
-    const cardHeight = Math.floor(boardHeight / rows) - 10; // Adjust with a margin
-
-    return { cardWidth, cardHeight };
-  }
-
   generateShuffledCards() {
     const numPairs = (this.config.columns * this.config.rows) / 2;
     const values = Array.from({ length: numPairs }, (_, index) => String(index + 1));
@@ -52,17 +40,19 @@ class MemoryGameBoard {
   }
 
   createBoard() {
-    const { cardWidth, cardHeight } = this.calculateCardSize();
+    const { columns, rows } = this.config;
 
     const board = document.createElement('div');
     board.classList.add('board');
     board.style.width = `${this.config.width}px`;
     board.style.height = `${this.config.height}px`;
     board.style.backgroundColor = this.config.theme.backgroundColor;
+    board.style.display = 'grid';
+    board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+    board.style.gridGap = '10px';
 
     this.cards.forEach(card => {
-      card.element.style.width = `${cardWidth}px`;
-      card.element.style.height = `${cardHeight}px`;
       board.appendChild(card.element);
     });
 
